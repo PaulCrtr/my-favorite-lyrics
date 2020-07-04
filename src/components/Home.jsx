@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import RequestForm from "./RequestForm";
 
 const Home = () => {
-  const [result, setResult] = useState();
+  const [item, setItem] = useState();
 
   return (
     <div>
-      <RequestForm setResult={setResult} />
-      <p>{result && result.lyrics}</p>
+      <RequestForm setItem={setItem} />
+      <p>{item && item.lyrics}</p>
     </div>
   );
 };

@@ -1,33 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const RequestForm = ({ setResult }) => {
-  const [artist, setArtist] = useState("");
-  const [title, setTitle] = useState("");
+const RequestForm = ({ setItem }) => {
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
 
-  const getlyrics = () => {
+  useEffect(() => {
     axios
-      .get(`https://api.lyrics.ovh/v1/${artist}/${title}`)
+      .get(`https://api.lyrics.ovh/suggest/${search}`)
+      .then((res) => {
+        let tempSearch = [];
+        for (let i = 0; i < 3; i++) {
+          const datas = res.data.data[i];
+          if (datas) {
+            tempSearch.push({
+              id: datas.id,
+              artist: datas.artist.name,
+              title: datas.title,
+              picture: datas.artist.picture,
+            });
+          }
+        }
+        setResults(tempSearch);
+      })
+      .catch(() => setResults([]));
+  }, [search]);
+
+  const getlyrics = (i) => {
+    axios
+      .get(`https://api.lyrics.ovh/v1/${results[i].artist}/${results[i].title}`)
       .then((res) => res.data.lyrics)
-      .then((res) => setResult({ artist, title, lyrics: res }))
-      .catch(setResult());
+      .then((res) => setItem({ ...results[i], lyrics: res }))
+      .catch(() => setItem());
   };
 
   return (
     <>
       <input
         type="text"
-        value={artist}
-        onChange={(e) => setArtist(e.target.value)}
-        placeholder="Artist"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search"
       />
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-      />
-      <button onClick={() => getlyrics()}>Search lyrics </button>
+      <ul>
+        {results.map((element, i) => (
+          <li
+            key={element.id}
+            id={i}
+            onClick={(e) => {
+              getlyrics(e.currentTarget.id);
+            }}
+          >
+            <p>{`${element.artist} - ${element.title}`}</p>
+            <img src={element.picture} alt={element.artist} />
+          </li>
+        ))}
+      </ul>
     </>
   );
 };
