@@ -4,27 +4,42 @@ import axios from "axios";
 const RequestForm = ({ setItem }) => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const [typingTime, setTypingTime] = useState(0);
 
   useEffect(() => {
-    axios
-      .get(`https://api.lyrics.ovh/suggest/${search}`)
-      .then((res) => {
-        let tempSearch = [];
-        for (let i = 0; i < 3; i++) {
-          const datas = res.data.data[i];
-          if (datas) {
-            tempSearch.push({
-              id: datas.id,
-              artist: datas.artist.name,
-              title: datas.title,
-              picture: datas.artist.picture,
-            });
-          }
-        }
-        setResults(tempSearch);
-      })
-      .catch(() => setResults([]));
+    setIsTyping(true);
+    if (typingTime) {
+      clearTimeout(typingTime);
+    }
+    setTypingTime(
+      setTimeout(() => {
+        setIsTyping(false);
+      }, 300)
+    );
   }, [search]);
+
+  useEffect(() => {
+    if (!isTyping && search.length > 0)
+      axios
+        .get(`https://api.lyrics.ovh/suggest/${search}`)
+        .then((res) => {
+          let tempSearch = [];
+          for (let i = 0; i < 3; i++) {
+            const datas = res.data.data[i];
+            if (datas) {
+              tempSearch.push({
+                id: datas.id,
+                artist: datas.artist.name,
+                title: datas.title,
+                picture: datas.artist.picture,
+              });
+            }
+          }
+          setResults(tempSearch);
+        })
+        .catch(() => setResults([]));
+  }, [isTyping]);
 
   const getlyrics = (i) => {
     axios
