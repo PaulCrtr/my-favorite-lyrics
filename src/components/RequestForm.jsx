@@ -28,6 +28,7 @@ const RequestForm = ({ setItem }) => {
           for (let i = 0; i < 3; i++) {
             const datas = res.data.data[i];
             if (datas) {
+              console.log(datas);
               tempSearch.push({
                 id: datas.id,
                 artist: datas.artist.name,
