@@ -49,7 +49,7 @@ const RequestForm = ({ setItem }) => {
       .get(`https://api.lyrics.ovh/v1/${results[i].artist}/${results[i].title}`)
       .then((res) => res.data.lyrics)
       .then((res) => setItem({ ...results[i], lyrics: res }))
-      .catch(() => setItem());
+      .catch(() => setItem("notFound"));
   };
 
   return (

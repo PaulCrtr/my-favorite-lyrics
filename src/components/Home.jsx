@@ -26,7 +26,7 @@ const Home = () => {
     <div>
       <Link to="./list">My list</Link>
       <RequestForm setItem={setItem} />
-      {item && (
+      {item && item !== "notFound" && (
         <div>
           {alreadyAdded ? (
             <button disabled> Already added !</button>
@@ -43,6 +43,7 @@ const Home = () => {
           <p>{item.lyrics}</p>
         </div>
       )}
+      {item === "notFound" && <p>Lyrics not found !</p>}
     </div>
   );
 };
