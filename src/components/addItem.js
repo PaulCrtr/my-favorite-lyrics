@@ -1,3 +1,4 @@
+// Add an element to localstorage
 const addItem = (item) => {
   let list = JSON.parse(window.localStorage.getItem("myLyrics")) || [];
   list.push(item);

@@ -8,6 +8,7 @@ const Home = () => {
   const [alreadyAdded, setAlreadyAdded] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
+  // Check if the item is already added
   useEffect(() => {
     if (item) {
       const searchItem = JSON.parse(

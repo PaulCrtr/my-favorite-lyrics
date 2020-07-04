@@ -7,6 +7,7 @@ const RequestForm = ({ setItem }) => {
   const [isTyping, setIsTyping] = useState(false);
   const [typingTime, setTypingTime] = useState(0);
 
+  // Set a timeout during writing so that the API is not overloaded
   useEffect(() => {
     setIsTyping(true);
     if (typingTime) {
@@ -19,6 +20,7 @@ const RequestForm = ({ setItem }) => {
     );
   }, [search]);
 
+  // Get search suggests and related datas
   useEffect(() => {
     if (!isTyping && search.length > 0)
       axios
@@ -41,6 +43,7 @@ const RequestForm = ({ setItem }) => {
         .catch(() => setResults([]));
   }, [isTyping]);
 
+  // Get lyrics and pass them into the item object
   const getlyrics = (i) => {
     axios
       .get(`https://api.lyrics.ovh/v1/${results[i].artist}/${results[i].title}`)
