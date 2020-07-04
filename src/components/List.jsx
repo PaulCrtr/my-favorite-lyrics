@@ -8,10 +8,12 @@ const List = () => {
     <div>
       <Link to="/">Home</Link>
       {list.map((item) => (
-        <div className="item">
-          <h2>{item.artist}</h2>
-          <h3>{item.title}</h3>
-          <img src={item.picture} alt={item.artist} />
+        <div key={item.id}>
+          <Link to={{ pathname: "/lyrics", state: { item } }}>
+            <h2>{item.artist}</h2>
+            <h3>{item.title}</h3>
+            <img src={item.picture} alt={item.artist} />
+          </Link>
         </div>
       ))}
     </div>
