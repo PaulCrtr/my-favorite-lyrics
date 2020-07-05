@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import addItem from "./addItem";
+import deleteItem from "./deleteItem";
 
 const FullLyrics = (props) => {
   const { datas } = props.location.state;
@@ -39,7 +40,14 @@ const FullLyrics = (props) => {
       {datas && (
         <div>
           {alreadyAdded ? (
-            <button disabled> Already added !</button>
+            <button
+              onClick={() => {
+                setIsClicked(!isClicked);
+                deleteItem(datas.id);
+              }}
+            >
+              Remove lyrics
+            </button>
           ) : (
             <button
               onClick={() => {

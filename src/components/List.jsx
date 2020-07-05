@@ -1,20 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import deleteItem from "./deleteItem";
+import groupList from "./groupList";
 
 const List = () => {
-  // Songs grouped by artists
-  const list = JSON.parse(window.localStorage.getItem("myLyrics")).reduce(
-    (element, { artist, id, title, picture, lyrics }) => {
-      (element[artist] = element[artist] || []).push({
-        id,
-        title,
-        picture,
-        lyrics,
-      });
-      return element;
-    },
-    {}
-  );
+  const [isClicked, setIsClicked] = useState(false);
+  const [list, setList] = useState(groupList());
+
+  useEffect(() => {
+    setList(groupList());
+  }, [isClicked]);
 
   return (
     <div>
@@ -23,10 +18,20 @@ const List = () => {
         <div key={i}>
           <h2>{key}</h2>
           {list[key].map((datas) => (
-            <Link to={{ pathname: "/lyrics", state: { datas } }} key={datas.id}>
-              <h3>{datas.title}</h3>
-              <img src={datas.picture} alt={datas.artist} />
-            </Link>
+            <div key={datas.id}>
+              <Link to={{ pathname: "/lyrics", state: { datas } }}>
+                <h3>{datas.title}</h3>
+                <img src={datas.picture} alt={datas.artist} />
+              </Link>
+              <button
+                onClick={() => {
+                  setIsClicked(!isClicked);
+                  deleteItem(datas.id);
+                }}
+              >
+                Remove lyrics
+              </button>
+            </div>
           ))}
         </div>
       ))}
