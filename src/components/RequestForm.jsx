@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-const RequestForm = ({ setItem }) => {
+const RequestForm = ({ setItem, item }) => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
@@ -22,7 +23,7 @@ const RequestForm = ({ setItem }) => {
 
   // Get search suggests and related datas
   useEffect(() => {
-    if (!isTyping && search.length > 0)
+    if (!isTyping && search)
       axios
         .get(`https://api.lyrics.ovh/suggest/${search}`)
         .then((res) => {
@@ -54,6 +55,14 @@ const RequestForm = ({ setItem }) => {
 
   return (
     <>
+      {item && item.lyrics && (
+        <Redirect
+          to={{
+            pathname: "/lyrics",
+            state: { datas: item },
+          }}
+        />
+      )}
       <input
         type="text"
         value={search}
@@ -61,18 +70,19 @@ const RequestForm = ({ setItem }) => {
         placeholder="Search"
       />
       <ul>
-        {results.map((element, i) => (
-          <li
-            key={element.id}
-            id={i}
-            onClick={(e) => {
-              getlyrics(e.currentTarget.id);
-            }}
-          >
-            <p>{`${element.artist} - ${element.title}`}</p>
-            <img src={element.picture} alt={element.artist} />
-          </li>
-        ))}
+        {search &&
+          results.map((element, i) => (
+            <li
+              key={element.id}
+              id={i}
+              onClick={(e) => {
+                getlyrics(e.currentTarget.id);
+              }}
+            >
+              <p>{`${element.artist} - ${element.title}`}</p>
+              <img src={element.picture} alt={element.artist} />
+            </li>
+          ))}
       </ul>
     </>
   );

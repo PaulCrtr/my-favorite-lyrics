@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import addItem from "./addItem";
 
 const FullLyrics = (props) => {
   const { datas } = props.location.state;
+  const [alreadyAdded, setAlreadyAdded] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+
+  // Check if the item is already added
+  useEffect(() => {
+    if (datas) {
+      const searchItem = JSON.parse(
+        window.localStorage.getItem("myLyrics")
+      ).find((element) => element.id === datas.id);
+      if (searchItem) {
+        setAlreadyAdded(true);
+      } else {
+        setAlreadyAdded(false);
+      }
+    }
+  }, [datas, isClicked]);
 
   return (
     <div>
@@ -19,7 +36,23 @@ const FullLyrics = (props) => {
         width="700"
         height="100"
       />
-      <p>{datas.lyrics}</p>
+      {datas && (
+        <div>
+          {alreadyAdded ? (
+            <button disabled> Already added !</button>
+          ) : (
+            <button
+              onClick={() => {
+                setIsClicked(!isClicked);
+                addItem(datas);
+              }}
+            >
+              Add to my list
+            </button>
+          )}
+          <p>{datas.lyrics}</p>
+        </div>
+      )}
     </div>
   );
 };
