@@ -87,4 +87,14 @@
   .artist-header img {
     max-width: 25%;
   }
+
+  /* Lyrics page */
+  .lyrics-header {
+    margin: 2%;
+  }
+
+  .lyrics {
+    width: 50%;
+    padding: 2%;
+  }
 }
