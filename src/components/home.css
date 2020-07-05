@@ -1,0 +1,95 @@
+.home {
+  height: 100vh;
+  background-image: url("../img/headphones.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.not-found {
+  position: fixed;
+  top: 30%;
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+
+.request-form {
+  width: 100%;
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+}
+
+.home input {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-style: none;
+  border-radius: 5px;
+  padding: 5%;
+  width: 80%;
+}
+.suggests {
+  position: fixed;
+  padding: 0;
+  margin-top: 2%;
+  left: 5%;
+  right: 5%;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  max-height: 40vh;
+  overflow: auto;
+}
+
+.suggests li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3%;
+  cursor: pointer;
+}
+
+.suggests p {
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.suggests li img {
+  max-width: 20%;
+  border-radius: 3px;
+}
+
+.suggests li:first-of-type {
+  border-bottom: 1px solid;
+}
+
+.suggests li:last-of-type {
+  border-top: 1px solid;
+}
+
+.suggests li:hover {
+  background-color: #f0f0f0;
+}
+
+.suggests li:hover:first-of-type {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.suggests li:hover:last-of-type {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

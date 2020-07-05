@@ -54,7 +54,7 @@ const RequestForm = ({ setItem, item }) => {
   };
 
   return (
-    <>
+    <div className="request-form">
       {item && item.lyrics && (
         <Redirect
           to={{
@@ -63,13 +63,15 @@ const RequestForm = ({ setItem, item }) => {
           }}
         />
       )}
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search"
-      />
-      <ul>
+      <div className="input-container">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search"
+        />
+      </div>
+      <ul className="suggests">
         {search &&
           results.map((element, i) => (
             <li
@@ -84,7 +86,7 @@ const RequestForm = ({ setItem, item }) => {
             </li>
           ))}
       </ul>
-    </>
+    </div>
   );
 };
 
