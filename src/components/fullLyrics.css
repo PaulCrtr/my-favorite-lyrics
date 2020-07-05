@@ -11,7 +11,12 @@
 .lyrics-header {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin: 3%;
+}
+
+.page-lyrics img:hover {
+  cursor: pointer;
 }
 
 .page-lyrics h2 {
