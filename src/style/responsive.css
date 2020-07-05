@@ -17,6 +17,24 @@
   .suggests li img {
     max-width: 13%;
   }
+
+  /* List page */
+  .home-link {
+    padding: 1%;
+  }
+
+  .home-link-container {
+    margin: 3%;
+  }
+
+  .artist-header,
+  .track {
+    padding: 1% 2% 1% 2%;
+  }
+
+  .artist {
+    margin: 2% 10% 2% 10%;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -55,5 +73,18 @@
     left: 26%;
     right: 26%;
     margin-top: 0.5%;
+  }
+
+  /* List page */
+
+  .home-link-container {
+    margin: 3%;
+  }
+
+  .artist {
+    margin: 2% 20% 2% 20%;
+  }
+  .artist-header img {
+    max-width: 25%;
   }
 }
