@@ -32,25 +32,27 @@ const FullLyrics = (props) => {
           <div className="lyrics-header">
             <Link to="/">Home</Link>
             <Link to="/list">My list</Link>
-            {alreadyAdded ? (
-              <img
-                src={trash}
-                alt="trash"
-                onClick={() => {
-                  setIsClicked(!isClicked);
-                  deleteItem(datas.id);
-                }}
-              />
-            ) : (
-              <img
-                src={iconAdd}
-                alt="add lyrics"
-                onClick={() => {
-                  setIsClicked(!isClicked);
-                  addItem(datas);
-                }}
-              />
-            )}
+            <div>
+              {alreadyAdded ? (
+                <img
+                  src={trash}
+                  alt="trash"
+                  onClick={() => {
+                    setIsClicked(!isClicked);
+                    deleteItem(datas.id);
+                  }}
+                />
+              ) : (
+                <img
+                  src={iconAdd}
+                  alt="add lyrics"
+                  onClick={() => {
+                    setIsClicked(!isClicked);
+                    addItem(datas);
+                  }}
+                />
+              )}
+            </div>
           </div>
           <iframe
             title={datas.title}

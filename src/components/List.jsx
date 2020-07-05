@@ -15,7 +15,11 @@ const List = () => {
 
   return (
     <div className="list">
-      <Link to="/">Home</Link>
+      <div className="home-link-container">
+        <Link to="/" className="home-link">
+          Home
+        </Link>
+      </div>
       {Object.keys(list).map((key, i) => (
         <div key={i} className="artist">
           <div className="artist-header">
