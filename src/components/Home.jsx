@@ -6,6 +6,7 @@ import "../style/home.css";
 
 const Home = () => {
   const [item, setItem] = useState();
+  const [isLoading, setIsLoading] = useState();
 
   useEffect(() => {
     initStorage();
@@ -17,8 +18,11 @@ const Home = () => {
         <h1>Lyrics</h1>
         <Link to="./list">My list</Link>
       </div>
-      {item === "notFound" && <h2 className="not-found">Lyrics not found !</h2>}
-      <RequestForm setItem={setItem} item={item} />
+      {item === "notFound" && !isLoading && (
+        <h2 className="not-found">Lyrics not found !</h2>
+      )}
+      {isLoading && <div className="lds-dual-ring" />}
+      <RequestForm setItem={setItem} item={item} setIsLoading={setIsLoading} />
     </div>
   );
 };

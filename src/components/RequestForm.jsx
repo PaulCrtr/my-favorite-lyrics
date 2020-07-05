@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 
-const RequestForm = ({ setItem, item }) => {
+const RequestForm = ({ setItem, item, setIsLoading }) => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
@@ -46,11 +46,18 @@ const RequestForm = ({ setItem, item }) => {
 
   // Get lyrics and pass them into the item object
   const getlyrics = (i) => {
+    setIsLoading(true);
     axios
       .get(`https://api.lyrics.ovh/v1/${results[i].artist}/${results[i].title}`)
       .then((res) => res.data.lyrics)
-      .then((res) => setItem({ ...results[i], lyrics: res }))
-      .catch(() => setItem("notFound"));
+      .then((res) => {
+        setIsLoading(false);
+        setItem({ ...results[i], lyrics: res });
+      })
+      .catch(() => {
+        setIsLoading(false);
+        setItem("notFound");
+      });
   };
 
   return (
