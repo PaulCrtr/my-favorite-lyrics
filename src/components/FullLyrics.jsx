@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import addItem from "./addItem";
 import deleteItem from "./deleteItem";
+import "./fullLyrics.css";
+import iconAdd from "../img/icon-add.png";
+import trash from "../img/trashdelete.png";
 
 const FullLyrics = (props) => {
   const { datas } = props.location.state;
@@ -23,45 +26,47 @@ const FullLyrics = (props) => {
   }, [datas, isClicked]);
 
   return (
-    <div>
-      <Link to="/">Home</Link>
-      <Link to="/list">My list</Link>
-      <h2>{datas.artist}</h2>
-      <h2>{datas.title}</h2>
-      <iframe
-        title={datas.title}
-        scrolling="no"
-        frameBorder="0"
-        allowtransparency="true"
-        src={`https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=tracks&id=${datas.id}&app_id=1`}
-        width="700"
-        height="100"
-      />
-      {datas && (
-        <div>
-          {alreadyAdded ? (
-            <button
-              onClick={() => {
-                setIsClicked(!isClicked);
-                deleteItem(datas.id);
-              }}
-            >
-              Remove lyrics
-            </button>
-          ) : (
-            <button
-              onClick={() => {
-                setIsClicked(!isClicked);
-                addItem(datas);
-              }}
-            >
-              Add to my list
-            </button>
-          )}
-          <p>{datas.lyrics}</p>
+    <>
+      {datas && datas && (
+        <div className="page-lyrics">
+          <div className="lyrics-header">
+            <Link to="/">Home</Link>
+            <Link to="/list">My list</Link>
+            {alreadyAdded ? (
+              <img
+                src={trash}
+                alt="trash"
+                onClick={() => {
+                  setIsClicked(!isClicked);
+                  deleteItem(datas.id);
+                }}
+              />
+            ) : (
+              <img
+                src={iconAdd}
+                alt="add lyrics"
+                onClick={() => {
+                  setIsClicked(!isClicked);
+                  addItem(datas);
+                }}
+              />
+            )}
+          </div>
+          <iframe
+            title={datas.title}
+            scrolling="no"
+            frameBorder="0"
+            allowtransparency="true"
+            src={`https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=tracks&id=${datas.id}&app_id=1`}
+            width="300"
+            height="90"
+          />
+
+          <h2>{`${datas.artist} - ${datas.title}`}</h2>
+          <p className="lyrics">{datas.lyrics}</p>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

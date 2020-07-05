@@ -7,6 +7,7 @@ const groupList = () => {
         title,
         picture,
         lyrics,
+        artist,
       });
       return element;
     },
