@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import addItem from "./addItem";
 import deleteItem from "./deleteItem";
-import "./fullLyrics.css";
 import iconAdd from "../img/icon-add.png";
 import trash from "../img/trashdelete.png";
+import "../style/fullLyrics.css";
 
 const FullLyrics = (props) => {
   const { datas } = props.location.state;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import deleteItem from "./deleteItem";
 import groupList from "./groupList";
 import trash from "../img/trashdelete.png";
-import "./list.css";
+import "../style/list.css";
 
 const List = () => {
   const [isClicked, setIsClicked] = useState(false);
