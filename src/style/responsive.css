@@ -1,0 +1,59 @@
+@media screen and (min-width: 576px) {
+  /* Home page */
+  .home input {
+    padding: 2%;
+  }
+
+  .suggests {
+    position: fixed;
+    left: 8%;
+    right: 8%;
+  }
+
+  .suggests li {
+    padding: 2%;
+  }
+
+  .suggests li img {
+    max-width: 13%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* Home page */
+
+  .home input {
+    width: 66%;
+  }
+
+  .suggests {
+    position: fixed;
+    left: 15%;
+    right: 15%;
+    margin-top: 1%;
+  }
+
+  .suggests li {
+    padding: 1%;
+  }
+
+  .suggests li img {
+    max-width: 10%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  /*Home page */
+
+  .home input {
+    padding: 1%;
+    width: 46%;
+  }
+
+  .suggests {
+    position: fixed;
+    left: 26%;
+    right: 26%;
+    margin-top: 0.5%;
+  }
+}
