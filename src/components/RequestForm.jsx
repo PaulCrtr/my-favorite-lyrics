@@ -75,7 +75,7 @@ const RequestForm = ({ setItem, item, setIsLoading }) => {
           type="text"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search"
+          placeholder="Search songs"
         />
       </div>
       <ul className="suggests">
