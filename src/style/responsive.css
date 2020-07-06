@@ -75,6 +75,10 @@
     margin-top: 0.5%;
   }
 
+  .home-nav a {
+    padding: 1%;
+  }
+
   /* List page */
 
   .home-link-container {
