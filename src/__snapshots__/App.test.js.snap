@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App renders App correctly 1`] = `
+<BrowserRouter>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/list"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/lyrics"
+    />
+  </Switch>
+</BrowserRouter>
+`;
+
+exports[`App renders Home correctly 1`] = `
+<div
+  className="home"
+>
+  <div
+    className="home-nav"
+  >
+    <h1>
+      Lyrics
+    </h1>
+    <Link
+      to="./list"
+    >
+      My list
+    </Link>
+  </div>
+  <RequestForm
+    setIsLoading={[Function]}
+    setItem={[Function]}
+  />
+</div>
+`;
+
+exports[`App renders List correctly 1`] = `
+<div
+  className="list"
+>
+  <div
+    className="home-link-container"
+  >
+    <Link
+      className="home-link"
+      to="/"
+    >
+      Home
+    </Link>
+  </div>
+  <div
+    className="artist"
+    key="0"
+  >
+    <div
+      className="artist-header"
+    >
+      <h2>
+        test 1
+      </h2>
+      <img
+        alt="test 1"
+        src="test 1"
+      />
+    </div>
+    <div
+      className="track"
+      key="10"
+    >
+      <Link
+        to={
+          Object {
+            "pathname": "/lyrics",
+            "state": Object {
+              "datas": Object {
+                "artist": "test 1",
+                "id": 10,
+                "lyrics": "This is a test 1.",
+                "picture": "test 1",
+                "title": "test 1",
+              },
+            },
+          }
+        }
+      >
+        <h3>
+          test 1
+        </h3>
+      </Link>
+      <img
+        alt="delete"
+        onClick={[Function]}
+        src="trashdelete.png"
+      />
+    </div>
+  </div>
+  <div
+    className="artist"
+    key="1"
+  >
+    <div
+      className="artist-header"
+    >
+      <h2>
+        test 2
+      </h2>
+      <img
+        alt="test 2"
+        src="test 2"
+      />
+    </div>
+    <div
+      className="track"
+      key="20"
+    >
+      <Link
+        to={
+          Object {
+            "pathname": "/lyrics",
+            "state": Object {
+              "datas": Object {
+                "artist": "test 2",
+                "id": 20,
+                "lyrics": "This is a test 2.",
+                "picture": "test 2",
+                "title": "test 2",
+              },
+            },
+          }
+        }
+      >
+        <h3>
+          test 2
+        </h3>
+      </Link>
+      <img
+        alt="delete"
+        onClick={[Function]}
+        src="trashdelete.png"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App renders Lyrics correctly 1`] = `
+<Fragment>
+  <div
+    className="page-lyrics"
+  >
+    <div
+      className="lyrics-header"
+    >
+      <Link
+        to="/"
+      >
+        Home
+      </Link>
+      <Link
+        to="/list"
+      >
+        My list
+      </Link>
+      <div>
+        <img
+          alt="add lyrics"
+          onClick={[Function]}
+          src="icon-add.png"
+        />
+      </div>
+    </div>
+    <iframe
+      allowtransparency="true"
+      frameBorder="0"
+      height="90"
+      scrolling="no"
+      src="https://www.deezer.com/plugins/player?format=classic&autoplay=false&playlist=true&width=700&height=350&color=007FEB&layout=dark&size=medium&type=tracks&id=10&app_id=1"
+      title="test 1"
+      width="300"
+    />
+    <h2>
+      test 1 - test 1
+    </h2>
+    <p
+      className="lyrics"
+    >
+      This is a test 1.
+    </p>
+  </div>
+</Fragment>
+`;
+
+exports[`App renders RequestForm correctly 1`] = `
+<div
+  className="request-form"
+>
+  <div
+    className="input-container"
+  >
+    <input
+      onChange={[Function]}
+      placeholder="Search songs"
+      type="text"
+      value=""
+    />
+  </div>
+  <ul
+    className="suggests"
+  />
+</div>
+`;
