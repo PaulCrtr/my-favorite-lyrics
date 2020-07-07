@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import RequestForm from "./RequestForm";
-import initStorage from "./initStorage";
+import { initStorage } from "./localstorageFunctions";
 import "../style/home.css";
 
 const Home = () => {

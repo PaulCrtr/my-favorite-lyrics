@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import addItem from "./addItem";
-import deleteItem from "./deleteItem";
+import { addItem, deleteItem } from "./localstorageFunctions";
 import iconAdd from "../img/icon-add.png";
 import trash from "../img/trashdelete.png";
 import "../style/fullLyrics.css";

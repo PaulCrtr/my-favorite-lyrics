@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import deleteItem from "./deleteItem";
-import groupList from "./groupList";
+import { deleteItem, groupList } from "./localstorageFunctions";
 import trash from "../img/trashdelete.png";
 import "../style/list.css";
 
